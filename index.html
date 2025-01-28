@@ -25,7 +25,7 @@
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800">
-    <header class="hero-bg text-white py-20 fade-in">
+    <header class="hero-bg text-white py-20">
         <div class="container mx-auto text-center">
             <h1 class="text-5xl font-bold drop-shadow-lg">ChatGPT — ваш умный помощник</h1>
             <p class="text-xl mt-4 drop-shadow-md">Откройте мир возможностей с искусственным интеллектом</p>
@@ -33,12 +33,12 @@
         </div>
     </header>
 
-    <main class="container mx-auto py-16 px-4 fade-in">
+    <main class="container mx-auto py-16 px-4">
         <section id="features" class="text-center mb-16">
-            <h2 class="text-4xl font-semibold mb-8">Почему выбирают ChatGPT?</h2>
-            <p class="text-lg text-gray-600 mb-12">ChatGPT помогает решать задачи, учиться, создавать контент и просто развлекаться. Это инструмент, который меняет подход к взаимодействию с технологиями.</p>
+            <h2 class="text-4xl font-semibold mb-8 fade-in">Почему выбирают ChatGPT?</h2>
+            <p class="text-lg text-gray-600 mb-12 fade-in">ChatGPT помогает решать задачи, учиться, создавать контент и просто развлекаться. Это инструмент, который меняет подход к взаимодействию с технологиями.</p>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-                <div class="bg-white shadow-lg rounded-lg p-8 hover-effect transition-all">
+                <div class="bg-white shadow-lg rounded-lg p-8 hover-effect transition-all fade-in">
                     <div class="text-blue-600 mb-4">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-12 h-12 mx-auto">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m-1-4h3l2 6h-2l-1-3h-1v3h2l1 3h-4" />
@@ -47,7 +47,7 @@
                     <h3 class="text-2xl font-bold mb-2">Умный и обучаемый</h3>
                     <p class="text-gray-700">ChatGPT способен адаптироваться к вашим запросам, помогая найти оптимальные решения.</p>
                 </div>
-                <div class="bg-white shadow-lg rounded-lg p-8 hover-effect transition-all">
+                <div class="bg-white shadow-lg rounded-lg p-8 hover-effect transition-all fade-in">
                     <div class="text-blue-600 mb-4">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-12 h-12 mx-auto">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
@@ -56,7 +56,7 @@
                     <h3 class="text-2xl font-bold mb-2">Многозадачность</h3>
                     <p class="text-gray-700">Он помогает писать коды, решать математические задачи, переводить тексты и многое другое.</p>
                 </div>
-                <div class="bg-white shadow-lg rounded-lg p-8 hover-effect transition-all">
+                <div class="bg-white shadow-lg rounded-lg p-8 hover-effect transition-all fade-in">
                     <div class="text-blue-600 mb-4">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-12 h-12 mx-auto">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a4 4 0 10-8 0v2m2 12h4m4-10H5m16 0a2 2 0 01-2 2H5a2 2 0 01-2-2m16 0V7a6 6 0 00-12 0v2m12 0H5" />
@@ -88,7 +88,9 @@
 
     <script>
         // GSAP animations
-        gsap.from(".fade-in", { duration: 1, opacity: 0, y: 50, stagger: 0.3 });
+        document.addEventListener("DOMContentLoaded", () => {
+            gsap.from(".fade-in", { duration: 1, opacity: 0, y: 50, stagger: 0.3 });
+        });
     </script>
 </body>
 </html>
