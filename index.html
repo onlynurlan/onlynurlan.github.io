@@ -10,43 +10,62 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
             color: white;
-            font-family: Arial, sans-serif;
+            font-family: 'Poppins', sans-serif;
             text-align: center;
             flex-direction: column;
-        }
-        .container {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            padding: 20px;
             animation: fadeIn 2s ease-in-out;
         }
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(-20px); }
             to { opacity: 1; transform: translateY(0); }
         }
+        .container {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+        }
         h1 {
-            font-size: 2.5em;
-            margin: 0;
+            font-size: 3em;
+            margin-bottom: 10px;
+            text-transform: uppercase;
         }
         p {
-            font-size: 1.2em;
+            font-size: 1.4em;
             margin-top: 10px;
+        }
+        .download-links {
+            margin-top: 20px;
         }
         .download-links a {
             display: inline-block;
             background: #ff9800;
             color: white;
-            padding: 10px 20px;
+            padding: 15px 25px;
             margin: 10px;
-            border-radius: 5px;
+            border-radius: 10px;
             text-decoration: none;
-            transition: 0.3s;
+            font-weight: bold;
+            font-size: 1.2em;
+            transition: 0.3s ease-in-out;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
         }
         .download-links a:hover {
             background: #e68900;
+            transform: scale(1.1);
+        }
+        .instructions {
+            margin-top: 20px;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: left;
+            font-size: 1.1em;
+            line-height: 1.6;
         }
     </style>
 </head>
@@ -58,11 +77,16 @@
             <a href="https://drive.google.com/file/d/10AuMvhc15FlldVNhSXBivldf7Fcw52h4/view?usp=drive_link" target="_blank">Download Block Blast Mod</a>
             <a href="https://chelpus.com/download/LuckyPatchers.com_Official_Installer_11.6.7.apk" target="_blank">Download Lucky Patcher</a>
         </div>
-        <p>Ниже Скачиваем Блок бласт и пытаемся установить. Не получается - скачиваем Лаки Патчер по ссылке выше.</p>
-        <p>Заходим в Google Play и скачиваем СХ Проводник. Заходим, выдаем доступ ко всему и заходим в папку "Скачанное" или "Загрузки" (она на главной странице экрана).</p>
-        <p>Ищем .apks файл (наш мод). Нашли - зажимаем и нажимаем "Поделиться". Выбираем поделиться с Lucky Patcher.</p>
-        <p>После этого, как только вы зашли в Лаки Патчер, тыкаем 1 - сразу установить без каких-либо патчей.</p>
-        <p><strong>ВНИМАНИЕ: СКАЧАЙТЕ ЛАКИ ПАТЧЕР, ЗАЙДИТЕ И ВЫДАЙТЕ ВСЕМУ ДОСТУП!!! ПОТОМ ВЫПОЛНЯЕМ МАХИНАЦИИ С АПК.</strong></p>
+        <div class="instructions">
+            <p><strong>Шаг 1:</strong> Выше Скачиваем Блок Бласт и пытаемся установить.</p>
+            <p><strong>Шаг 2:</strong> Если не получается - скачиваем Лаки Патчер по ссылке выше.</p>
+            <p><strong>Шаг 3:</strong> Заходим в Google Play и скачиваем СХ Проводник. Даем доступ ко всему.</p>
+            <p><strong>Шаг 4:</strong> Открываем папку "Скачанное" или "Загрузки" (на главной странице экрана).</p>
+            <p><strong>Шаг 5:</strong> Ищем .apks файл (наш мод), зажимаем и нажимаем "Поделиться".</p>
+            <p><strong>Шаг 6:</strong> Выбираем "Поделиться с Lucky Patcher".</p>
+            <p><strong>Шаг 7:</strong> В Лаки Патчере выбираем "Сразу установить без патчей".</p>
+            <p><strong>Важно:</strong> СКАЧАЙТЕ ЛАКИ ПАТЧЕР, ВЫДАЙТЕ ВСЕМУ ДОСТУП, ПОТОМ ВЫПОЛНЯЙТЕ МАХИНАЦИИ С АПК!</p>
+        </div>
     </div>
 </body>
 </html>
