@@ -10,13 +10,14 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            background: linear-gradient(135deg, #1e3c72, #2a5298, #0f0c29);
             color: white;
             font-family: 'Poppins', sans-serif;
             text-align: center;
             flex-direction: column;
             padding: 20px;
             animation: fadeIn 1.5s ease-in-out;
+            overflow: hidden;
         }
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(-20px); }
@@ -25,18 +26,25 @@
         .container {
             background: rgba(255, 255, 255, 0.2);
             padding: 40px;
-            border-radius: 15px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(15px);
-            max-width: 700px;
+            border-radius: 20px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(20px);
+            max-width: 800px;
+            transition: transform 0.3s ease-in-out;
+        }
+        .container:hover {
+            transform: scale(1.05);
         }
         h1 {
-            font-size: 2.8em;
-            margin-bottom: 15px;
+            font-size: 3em;
+            margin-bottom: 20px;
             text-transform: uppercase;
+            background: linear-gradient(90deg, #ff8a00, #e52e71);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
         p {
-            font-size: 1.3em;
+            font-size: 1.4em;
             margin-top: 10px;
         }
         .mod-selector {
@@ -45,36 +53,37 @@
         select {
             padding: 12px;
             font-size: 1.2em;
-            border-radius: 5px;
+            border-radius: 10px;
             border: none;
             background: white;
             color: black;
+            cursor: pointer;
         }
         .download-links a {
             display: inline-block;
-            background: #ff9800;
+            background: linear-gradient(45deg, #ff8a00, #e52e71);
             color: white;
             padding: 15px 25px;
             margin: 10px;
             border-radius: 10px;
             text-decoration: none;
             font-weight: bold;
-            font-size: 1.2em;
+            font-size: 1.3em;
             transition: 0.3s ease-in-out;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
         }
         .download-links a:hover {
-            background: #e68900;
             transform: scale(1.1);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
         }
         .instructions {
             margin-top: 20px;
             background: rgba(0, 0, 0, 0.3);
-            padding: 20px;
-            border-radius: 10px;
+            padding: 25px;
+            border-radius: 15px;
             text-align: left;
-            font-size: 1.1em;
-            line-height: 1.6;
+            font-size: 1.2em;
+            line-height: 1.8;
             display: none;
         }
     </style>
@@ -114,7 +123,6 @@
                     <li>Выдаём доступ ко всем файлам.</li>
                     <li>Нажимаем "Сразу установить без патчей".</li>
                     <li>Ждём завершения установки.</li>
-                    <li>Важное: выдайте лакипатчеру все права.<li>
                 </ul>
             </p>
         </div>
@@ -126,7 +134,7 @@
             </div>
             <p><strong>Шаг 1:</strong> Скачиваем мод.</p>
             <p><strong>Шаг 2:</strong> Открываем проводник и переходим в <code>tencent.ig/files</code>.</p>
-            <p><strong>Шаг 3:</strong> Копируем файл "зеленые чамсы 3.6" в эту папку.</p>
+            <p><strong>Шаг 3:</strong> Копируем файл "зеленые чамсы 3.6" распаковываем в эту папку.</p>
             <p><strong>Шаг 4:</strong> Запускаем игру и наслаждаемся модификацией!</p>
         </div>
     </div>
