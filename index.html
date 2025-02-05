@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nursultan.tech Production - Best Mod for Block Blast!</title>
+    <title>Nursultan.tech Production - Лучшие модификации!</title>
     <style>
         body {
             display: flex;
@@ -28,6 +28,7 @@
             border-radius: 20px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
             backdrop-filter: blur(10px);
+            max-width: 600px;
         }
         h1 {
             font-size: 3em;
@@ -38,8 +39,14 @@
             font-size: 1.4em;
             margin-top: 10px;
         }
-        .download-links {
-            margin-top: 20px;
+        .mod-selector {
+            margin-bottom: 20px;
+        }
+        select {
+            padding: 10px;
+            font-size: 1.2em;
+            border-radius: 5px;
+            border: none;
         }
         .download-links a {
             display: inline-block;
@@ -66,26 +73,52 @@
             text-align: left;
             font-size: 1.1em;
             line-height: 1.6;
+            display: none;
         }
     </style>
+    <script>
+        function showInstructions() {
+            let selectedMod = document.getElementById("mod-select").value;
+            document.getElementById("block-blast").style.display = selectedMod === "block-blast" ? "block" : "none";
+            document.getElementById("pubg-mobile").style.display = selectedMod === "pubg-mobile" ? "block" : "none";
+        }
+    </script>
 </head>
 <body>
     <div class="container">
         <h1>Nursultan.tech Production</h1>
-        <p>Is Best Modification For Block Blast!</p>
-        <div class="download-links">
-            <a href="https://drive.google.com/file/d/10AuMvhc15FlldVNhSXBivldf7Fcw52h4/view?usp=drive_link" target="_blank">Download Block Blast Mod</a>
-            <a href="https://chelpus.com/download/LuckyPatchers.com_Official_Installer_11.6.7.apk" target="_blank">Download Lucky Patcher</a>
+        <p>Выберите игру для модификации:</p>
+        <div class="mod-selector">
+            <select id="mod-select" onchange="showInstructions()">
+                <option value="block-blast">Block Blast</option>
+                <option value="pubg-mobile">PUBG Mobile</option>
+            </select>
         </div>
-        <div class="instructions">
-            <p><strong>Шаг 1:</strong> Выше Скачиваем Блок Бласт и пытаемся установить.</p>
+        
+        <div id="block-blast" class="instructions" style="display: block;">
+            <h2>Block Blast</h2>
+            <div class="download-links">
+                <a href="https://drive.google.com/file/d/10AuMvhc15FlldVNhSXBivldf7Fcw52h4/view?usp=drive_link" target="_blank">Скачать Block Blast Mod</a>
+                <a href="https://chelpus.com/download/LuckyPatchers.com_Official_Installer_11.6.7.apk" target="_blank">Скачать Lucky Patcher</a>
+            </div>
+            <p><strong>Шаг 1:</strong> Скачиваем Блок Бласт и пытаемся установить.</p>
             <p><strong>Шаг 2:</strong> Если не получается - скачиваем Лаки Патчер по ссылке выше.</p>
-            <p><strong>Шаг 3:</strong> Заходим в Google Play и скачиваем СХ Проводник. Даем доступ ко всему.</p>
-            <p><strong>Шаг 4:</strong> Открываем папку "Скачанное" или "Загрузки" (на главной странице экрана).</p>
-            <p><strong>Шаг 5:</strong> Ищем .apks файл (наш мод), зажимаем и нажимаем "Поделиться".</p>
+            <p><strong>Шаг 3:</strong> Заходим в Google Play и скачиваем СХ Проводник.</p>
+            <p><strong>Шаг 4:</strong> Открываем папку "Скачанное" или "Загрузки".</p>
+            <p><strong>Шаг 5:</strong> Ищем .apks файл, зажимаем и нажимаем "Поделиться".</p>
             <p><strong>Шаг 6:</strong> Выбираем "Поделиться с Lucky Patcher".</p>
-            <p><strong>Шаг 7:</strong> В Лаки Патчере выбираем "Сразу установить без патчей".</p>
-            <p><strong>Важно:</strong> СКАЧАЙТЕ ЛАКИ ПАТЧЕР, ВЫДАЙТЕ ВСЕМУ ДОСТУП, ПОТОМ ВЫПОЛНЯЙТЕ МАХИНАЦИИ С АПК!</p>
+            <p><strong>Шаг 7:</strong> В Lucky Patcher нажимаем "Сразу установить без патчей".</p>
+        </div>
+        
+        <div id="pubg-mobile" class="instructions">
+            <h2>PUBG Mobile</h2>
+            <div class="download-links">
+                <a href="https://workupload.com/file/yTzV9QVmmNT" target="_blank">Скачать PUBG Mobile Mod</a>
+            </div>
+            <p><strong>Шаг 1:</strong> Скачиваем мод.</p>
+            <p><strong>Шаг 2:</strong> Открываем проводник и переходим в <code>tencent.ig/files</code>.</p>
+            <p><strong>Шаг 3:</strong> Копируем файл "зеленые чамсы 3.6" в эту папку.</p>
+            <p><strong>Шаг 4:</strong> Запускаем игру и наслаждаемся модификацией!</p>
         </div>
     </div>
 </body>
