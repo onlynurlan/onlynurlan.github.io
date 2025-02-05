@@ -10,43 +10,45 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
             color: white;
             font-family: 'Poppins', sans-serif;
             text-align: center;
             flex-direction: column;
             padding: 20px;
-            animation: fadeIn 2s ease-in-out;
+            animation: fadeIn 1.5s ease-in-out;
         }
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(-20px); }
             to { opacity: 1; transform: translateY(0); }
         }
         .container {
-            background: rgba(255, 255, 255, 0.15);
+            background: rgba(255, 255, 255, 0.2);
             padding: 40px;
-            border-radius: 20px;
+            border-radius: 15px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(10px);
-            max-width: 600px;
+            backdrop-filter: blur(15px);
+            max-width: 700px;
         }
         h1 {
-            font-size: 3em;
-            margin-bottom: 10px;
+            font-size: 2.8em;
+            margin-bottom: 15px;
             text-transform: uppercase;
         }
         p {
-            font-size: 1.4em;
+            font-size: 1.3em;
             margin-top: 10px;
         }
         .mod-selector {
             margin-bottom: 20px;
         }
         select {
-            padding: 10px;
+            padding: 12px;
             font-size: 1.2em;
             border-radius: 5px;
             border: none;
+            background: white;
+            color: black;
         }
         .download-links a {
             display: inline-block;
@@ -67,7 +69,7 @@
         }
         .instructions {
             margin-top: 20px;
-            background: rgba(0, 0, 0, 0.2);
+            background: rgba(0, 0, 0, 0.3);
             padding: 20px;
             border-radius: 10px;
             text-align: left;
@@ -107,7 +109,14 @@
             <p><strong>Шаг 4:</strong> Открываем папку "Скачанное" или "Загрузки".</p>
             <p><strong>Шаг 5:</strong> Ищем .apks файл, зажимаем и нажимаем "Поделиться".</p>
             <p><strong>Шаг 6:</strong> Выбираем "Поделиться с Lucky Patcher".</p>
-            <p><strong>Шаг 7:</strong> В Lucky Patcher нажимаем "Сразу установить без патчей".</p>
+            <p><strong>Шаг 7:</strong> В Lucky Patcher:
+                <ul>
+                    <li>Выдаём доступ ко всем файлам.</li>
+                    <li>Нажимаем "Сразу установить без патчей".</li>
+                    <li>Ждём завершения установки.</li>
+                    <li>Важное: выдайте лакипатчеру все права.<li>
+                </ul>
+            </p>
         </div>
         
         <div id="pubg-mobile" class="instructions">
