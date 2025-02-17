@@ -21,13 +21,42 @@
             padding: 20px;
             overflow: hidden;
         }
-        .login-container, .mod-container {
+        .login-container {
             background: rgba(255, 255, 255, 0.2);
             padding: 30px;
             border-radius: 15px;
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
             backdrop-filter: blur(10px);
-            max-width: 600px;
+            max-width: 400px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .login-container input {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+        .login-container button {
+            background: #ff9800;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .login-container button:hover {
+            background: #e68900;
+        }
+        .top-right {
+            position: absolute;
+            top: 20px;
+            right: 20px;
         }
         .hidden {
             display: none;
@@ -35,86 +64,68 @@
     </style>
 </head>
 <body>
-    <div class="login-container" id="login-section">
+    <div class="top-right">
+        <button onclick="toggleLogin()">Войти</button>
+    </div>
+    
+    <div class="login-container hidden" id="login-section">
         <h2>Вход / Регистрация</h2>
-        <input type="text" id="logBox" placeholder="Введите код">
-        <button onclick="checkLogAccess()">Проверить</button>
-        <br><br>
-        <button onclick="googleLogin()">Войти через Google</button>
-        <div id="logs" class="hidden">
-            <h3>Логи входов</h3>
-            <div id="logData"></div>
-        </div>
+        <input type="email" id="email" placeholder="Email">
+        <input type="password" id="password" placeholder="Пароль">
+        <button onclick="login()">Войти</button>
+        <button onclick="register()">Регистрация</button>
     </div>
 
-    <div id="content" class="mod-container hidden">
+    <div id="content" class="hidden">
         <h1>Nursultan.tech Production</h1>
         <p>Выберите игру для модификации:</p>
         <select id="mod-select" onchange="showInstructions()">
             <option value="block-blast">Block Blast</option>
             <option value="pubg-mobile">PUBG Mobile</option>
         </select>
-
         <div id="block-blast" class="hidden">
             <h2>Block Blast</h2>
             <a href="https://drive.google.com/file/d/10AuMvhc15FlldVNhSXBivldf7Fcw52h4/view?usp=drive_link" target="_blank">Скачать Block Blast Mod</a>
             <a href="https://chelpus.com/download/LuckyPatchers.com_Official_Installer_11.6.7.apk" target="_blank">Скачать Lucky Patcher</a>
-            <p><strong>Инструкция:</strong> Установите мод и, если нужно, используйте Lucky Patcher.</p>
+            <h3>Инструкция:</h3>
+            <p>1. Скачайте Block Blast Mod и попробуйте установить.</p>
+            <p>2. Если не устанавливается, скачайте Lucky Patcher.</p>
+            <p>3. Установите ES Проводник из Google Play.</p>
+            <p>4. Откройте ES Проводник, выдайте доступ ко всему.</p>
+            <p>5. Перейдите в папку "Скачанное" или "Загрузки".</p>
+            <p>6. Найдите .apks файл (модификацию), зажмите и выберите "Поделиться".</p>
+            <p>7. Выберите "Поделиться с Lucky Patcher".</p>
+            <p>8. В Lucky Patcher выберите "Сразу установить без каких-либо патчей".</p>
         </div>
-
         <div id="pubg-mobile" class="hidden">
             <h2>PUBG Mobile</h2>
             <a href="https://workupload.com/file/yTzV9QVmmNT" target="_blank">Скачать PUBG Mobile Mod</a>
-            <p><strong>Инструкция:</strong> Копируйте "зеленые чамсы 3.6" в <code>tencent.ig/files</code>.</p>
+            <h3>Инструкция:</h3>
+            <p>1. Скачайте мод.</p>
+            <p>2. Переместите файл "зеленые чамсы 3.6" в папку tencent.ig/files.</p>
         </div>
     </div>
 
     <script>
-        const firebaseConfig = {
-            apiKey: "YOUR_API_KEY",
-            authDomain: "YOUR_AUTH_DOMAIN",
-            databaseURL: "YOUR_DATABASE_URL",
-            projectId: "YOUR_PROJECT_ID",
-            storageBucket: "YOUR_STORAGE_BUCKET",
-            messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-            appId: "YOUR_APP_ID"
-        };
-        firebase.initializeApp(firebaseConfig);
-        const auth = firebase.auth();
-        const database = firebase.database();
-
-        function googleLogin() {
-            const provider = new firebase.auth.GoogleAuthProvider();
-            auth.signInWithPopup(provider).then(result => {
-                const user = result.user;
-                database.ref('users/' + user.uid).set({
-                    email: user.email,
-                    loginTime: new Date().toLocaleString()
-                });
+        function toggleLogin() {
+            document.getElementById('login-section').classList.toggle('hidden');
+        }
+        function login() {
+            let email = document.getElementById("email").value;
+            let password = document.getElementById("password").value;
+            firebase.auth().signInWithEmailAndPassword(email, password).then(user => {
                 document.getElementById('login-section').classList.add('hidden');
                 document.getElementById('content').classList.remove('hidden');
-            }).catch(error => console.log(error));
+            }).catch(error => alert(error.message));
         }
-
-        function checkLogAccess() {
-            const input = document.getElementById('logBox').value;
-            if (input === 'expensive') {
-                document.getElementById('logs').classList.remove('hidden');
-                loadLogs();
-            }
+        function register() {
+            let email = document.getElementById("email").value;
+            let password = document.getElementById("password").value;
+            firebase.auth().createUserWithEmailAndPassword(email, password).then(user => {
+                alert("Регистрация успешна!");
+                login();
+            }).catch(error => alert(error.message));
         }
-
-        function loadLogs() {
-            database.ref('users').once('value', snapshot => {
-                let logs = '';
-                snapshot.forEach(childSnapshot => {
-                    let data = childSnapshot.val();
-                    logs += `<p>${data.email} - Вход: ${data.loginTime}</p>`;
-                });
-                document.getElementById('logData').innerHTML = logs;
-            });
-        }
-
         function showInstructions() {
             let selectedMod = document.getElementById("mod-select").value;
             document.getElementById("block-blast").classList.toggle("hidden", selectedMod !== "block-blast");
