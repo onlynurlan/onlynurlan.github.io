@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nursultan.tech Production - Лучшие модификации!</title>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js"></script>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #1e3c72, #2a5298, #0f0c29);
+            color: white;
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            flex-direction: column;
+            padding: 20px;
+            overflow: hidden;
+        }
+        .login-container, .mod-container {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(10px);
+            max-width: 600px;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container" id="login-section">
+        <h2>Вход / Регистрация</h2>
+        <input type="text" id="logBox" placeholder="Введите код">
+        <button onclick="checkLogAccess()">Проверить</button>
+        <br><br>
+        <button onclick="googleLogin()">Войти через Google</button>
+        <div id="logs" class="hidden">
+            <h3>Логи входов</h3>
+            <div id="logData"></div>
+        </div>
+    </div>
+
+    <div id="content" class="mod-container hidden">
+        <h1>Nursultan.tech Production</h1>
+        <p>Выберите игру для модификации:</p>
+        <select id="mod-select" onchange="showInstructions()">
+            <option value="block-blast">Block Blast</option>
+            <option value="pubg-mobile">PUBG Mobile</option>
+        </select>
+
+        <div id="block-blast" class="hidden">
+            <h2>Block Blast</h2>
+            <a href="https://drive.google.com/file/d/10AuMvhc15FlldVNhSXBivldf7Fcw52h4/view?usp=drive_link" target="_blank">Скачать Block Blast Mod</a>
+            <a href="https://chelpus.com/download/LuckyPatchers.com_Official_Installer_11.6.7.apk" target="_blank">Скачать Lucky Patcher</a>
+            <p><strong>Инструкция:</strong> Установите мод и, если нужно, используйте Lucky Patcher.</p>
+        </div>
+
+        <div id="pubg-mobile" class="hidden">
+            <h2>PUBG Mobile</h2>
+            <a href="https://workupload.com/file/yTzV9QVmmNT" target="_blank">Скачать PUBG Mobile Mod</a>
+            <p><strong>Инструкция:</strong> Копируйте "зеленые чамсы 3.6" в <code>tencent.ig/files</code>.</p>
+        </div>
+    </div>
+
+    <script>
+        const firebaseConfig = {
+            apiKey: "YOUR_API_KEY",
+            authDomain: "YOUR_AUTH_DOMAIN",
+            databaseURL: "YOUR_DATABASE_URL",
+            projectId: "YOUR_PROJECT_ID",
+            storageBucket: "YOUR_STORAGE_BUCKET",
+            messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+            appId: "YOUR_APP_ID"
+        };
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+        const database = firebase.database();
+
+        function googleLogin() {
+            const provider = new firebase.auth.GoogleAuthProvider();
+            auth.signInWithPopup(provider).then(result => {
+                const user = result.user;
+                database.ref('users/' + user.uid).set({
+                    email: user.email,
+                    loginTime: new Date().toLocaleString()
+                });
+                document.getElementById('login-section').classList.add('hidden');
+                document.getElementById('content').classList.remove('hidden');
+            }).catch(error => console.log(error));
+        }
+
+        function checkLogAccess() {
+            const input = document.getElementById('logBox').value;
+            if (input === 'expensive') {
+                document.getElementById('logs').classList.remove('hidden');
+                loadLogs();
+            }
+        }
+
+        function loadLogs() {
+            database.ref('users').once('value', snapshot => {
+                let logs = '';
+                snapshot.forEach(childSnapshot => {
+                    let data = childSnapshot.val();
+                    logs += `<p>${data.email} - Вход: ${data.loginTime}</p>`;
+                });
+                document.getElementById('logData').innerHTML = logs;
+            });
+        }
+
+        function showInstructions() {
+            let selectedMod = document.getElementById("mod-select").value;
+            document.getElementById("block-blast").classList.toggle("hidden", selectedMod !== "block-blast");
+            document.getElementById("pubg-mobile").classList.toggle("hidden", selectedMod !== "pubg-mobile");
+        }
+    </script>
+</body>
+</html>
