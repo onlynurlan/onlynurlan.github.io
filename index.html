@@ -6,7 +6,17 @@
     <title>Nursultan.tech Production - Лучшие модификации!</title>
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js"></script>
+    <script>
+        const firebaseConfig = {
+            apiKey: "YOUR_API_KEY",
+            authDomain: "YOUR_AUTH_DOMAIN",
+            projectId: "YOUR_PROJECT_ID",
+            storageBucket: "YOUR_STORAGE_BUCKET",
+            messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+            appId: "YOUR_APP_ID"
+        };
+        firebase.initializeApp(firebaseConfig);
+    </script>
     <style>
         body {
             display: flex;
@@ -19,7 +29,6 @@
             text-align: center;
             flex-direction: column;
             padding: 20px;
-            overflow: hidden;
         }
         .login-container {
             background: rgba(255, 255, 255, 0.2);
@@ -32,43 +41,13 @@
             flex-direction: column;
             align-items: center;
         }
-        .login-container input {
-            width: 90%;
-            padding: 10px;
-            margin: 10px 0;
-            border: none;
-            border-radius: 5px;
-            font-size: 1em;
-        }
-        .login-container button {
-            background: #ff9800;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            font-size: 1.2em;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-        .login-container button:hover {
-            background: #e68900;
-        }
-        .top-right {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-        }
         .hidden {
             display: none;
         }
     </style>
 </head>
 <body>
-    <div class="top-right">
-        <button onclick="toggleLogin()">Войти</button>
-    </div>
-    
-    <div class="login-container hidden" id="login-section">
+    <div class="login-container" id="login-section">
         <h2>Вход / Регистрация</h2>
         <input type="email" id="email" placeholder="Email">
         <input type="password" id="password" placeholder="Пароль">
@@ -87,29 +66,30 @@
             <h2>Block Blast</h2>
             <a href="https://drive.google.com/file/d/10AuMvhc15FlldVNhSXBivldf7Fcw52h4/view?usp=drive_link" target="_blank">Скачать Block Blast Mod</a>
             <a href="https://chelpus.com/download/LuckyPatchers.com_Official_Installer_11.6.7.apk" target="_blank">Скачать Lucky Patcher</a>
-            <h3>Инструкция:</h3>
-            <p>1. Скачайте Block Blast Mod и попробуйте установить.</p>
-            <p>2. Если не устанавливается, скачайте Lucky Patcher.</p>
-            <p>3. Установите ES Проводник из Google Play.</p>
-            <p>4. Откройте ES Проводник, выдайте доступ ко всему.</p>
-            <p>5. Перейдите в папку "Скачанное" или "Загрузки".</p>
-            <p>6. Найдите .apks файл (модификацию), зажмите и выберите "Поделиться".</p>
-            <p>7. Выберите "Поделиться с Lucky Patcher".</p>
-            <p>8. В Lucky Patcher выберите "Сразу установить без каких-либо патчей".</p>
+            <p><strong>Инструкция:</strong></p>
+            <ul>
+                <li>Скачиваем Block Blast и пытаемся установить.</li>
+                <li>Не получается? Скачиваем Lucky Patcher по ссылке выше.</li>
+                <li>Заходим в Google Play и скачиваем ES Проводник.</li>
+                <li>Открываем ES Проводник, выдаем доступ ко всему.</li>
+                <li>Заходим в папку "Скачанные" или "Загрузки".</li>
+                <li>Ищем .apks файл (наш мод), зажимаем и нажимаем "Поделиться".</li>
+                <li>Выбираем "Поделиться с Lucky Patcher".</li>
+                <li>После открытия Lucky Patcher выбираем "Сразу установить без патчей".</li>
+            </ul>
         </div>
         <div id="pubg-mobile" class="hidden">
             <h2>PUBG Mobile</h2>
             <a href="https://workupload.com/file/yTzV9QVmmNT" target="_blank">Скачать PUBG Mobile Mod</a>
-            <h3>Инструкция:</h3>
-            <p>1. Скачайте мод.</p>
-            <p>2. Переместите файл "зеленые чамсы 3.6" в папку tencent.ig/files.</p>
+            <p><strong>Инструкция:</strong></p>
+            <ul>
+                <li>Скачиваем мод.</li>
+                <li>Перемещаем файл "Зеленые Чамсы 3.6" в папку <code>/tencent.ig/files</code>.</li>
+            </ul>
         </div>
     </div>
 
     <script>
-        function toggleLogin() {
-            document.getElementById('login-section').classList.toggle('hidden');
-        }
         function login() {
             let email = document.getElementById("email").value;
             let password = document.getElementById("password").value;
@@ -134,3 +114,4 @@
     </script>
 </body>
 </html>
+
